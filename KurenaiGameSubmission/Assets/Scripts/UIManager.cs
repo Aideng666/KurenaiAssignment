@@ -18,6 +18,8 @@ public class UIManager : MonoBehaviour
     {
         AudioManager.Instance.Play("MainTheme");
         currentActiveHearts = Health.Instance.MaxHealth;
+
+        ScoreCounter.ResetScore();
     }
 
     // Update is called once per frame

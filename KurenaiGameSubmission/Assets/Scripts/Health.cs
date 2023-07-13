@@ -35,6 +35,11 @@ public class Health : MonoBehaviour
         if (currentHealth<= 0)
         {
             gameOver = true;
+
+            if (!PlayerPrefs.HasKey("Highscore") || PlayerPrefs.GetInt("Highscore") < ScoreCounter.score)
+            {
+                PlayerPrefs.SetInt("Highscore", ScoreCounter.score);
+            }
         }
     }
 

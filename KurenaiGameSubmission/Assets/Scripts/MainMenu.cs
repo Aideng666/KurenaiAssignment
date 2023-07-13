@@ -8,12 +8,20 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI titleText;
+    [SerializeField] TextMeshProUGUI highscoreText;
     [SerializeField] List<Button> menuButons;
     [SerializeField] GameObject tutorialPanel;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (!PlayerPrefs.HasKey("Highscore"))
+        {
+            PlayerPrefs.SetInt("Highscore", 0);
+        }
+
+        highscoreText.text = "Current Highscore: " + PlayerPrefs.GetInt("Highscore").ToString();
+
         AudioManager.Instance.Play("MenuTheme");
 
         Sequence titleTextSequence = DOTween.Sequence();

@@ -23,4 +23,9 @@ public static class ScoreCounter
             spawner.SpawnHealthPowerup();
         }
     }
+
+    public static void ResetScore()
+    {
+        score = 0;
+    }
 }
