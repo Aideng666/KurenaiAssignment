@@ -24,7 +24,7 @@ public class MainMenu : MonoBehaviour
 
         Sequence buttonSequence = DOTween.Sequence();
 
-        buttonSequence.Append(menuButons[0].transform.DOMoveX(200, 0.5f)).Append(menuButons[1].transform.DOMoveX(200, 0.5f)).Append(menuButons[2].transform.DOMoveX(200, 0.5f));
+        buttonSequence.Append(menuButons[0].transform.DOMoveX(250, 0.5f)).Append(menuButons[1].transform.DOMoveX(250, 0.5f)).Append(menuButons[2].transform.DOMoveX(250, 0.5f));
     }
 
     public void PlayGame()
