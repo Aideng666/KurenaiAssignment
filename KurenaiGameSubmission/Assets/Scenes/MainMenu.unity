@@ -1493,9 +1493,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Destroy the spaceships by clicking on them before they hit the planet!
     Be careful, there are different types of ships that have different effects. Get
-    score combos by making ships crash into eachother. Survive as long as possible
-    and once 3 ships have hit the planet, it will be destroyed and the game will
-    be over!
+    score combos by making ships crash into eachother. Click on hearts flying by
+    to gain health when not full. Survive as long as possible and once all 3 hearts
+    are lost, the planet will be destroyed and the game will be over!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1522,8 +1522,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1923,6 +1923,12 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Thruster
     _clip: {fileID: 8300000, guid: e1f9003841376fb46995649f24905efc, type: 3}
+    _volume: 0.5
+    _pitch: 1
+    _loop: 0
+    source: {fileID: 0}
+  - name: Heal
+    _clip: {fileID: 8300000, guid: 7a445458872fae54494b634fed7c2200, type: 3}
     _volume: 0.5
     _pitch: 1
     _loop: 0

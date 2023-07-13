@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,10 +11,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject losePanel;
     [SerializeField] List<SpriteRenderer> hearts;
 
+    int currentActiveHearts;
+
     // Start is called before the first frame update
     void Start()
     {
         AudioManager.Instance.Play("MainTheme");
+        currentActiveHearts = Health.Instance.MaxHealth;
     }
 
     // Update is called once per frame
@@ -28,11 +32,18 @@ public class UIManager : MonoBehaviour
             losePanel.SetActive(true);
         }
 
-        if (Health.Instance.currentHealth < hearts.Count && hearts.Count > 0)
+        if (Health.Instance.currentHealth < currentActiveHearts)
         {
-            Destroy(hearts[hearts.Count - 1].gameObject);
+            hearts[currentActiveHearts - 1].transform.DOScale(0, 0.5f);
 
-            hearts.RemoveAt(hearts.Count - 1);
+            currentActiveHearts--;
+        }
+
+        if (Health.Instance.currentHealth > currentActiveHearts)
+        {
+            hearts[currentActiveHearts].transform.DOScale(5, 0.5f);
+
+            currentActiveHearts++;
         }
     }
 

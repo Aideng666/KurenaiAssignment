@@ -818,6 +818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af168e18082de6949be4904746c08a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthPowerup: {fileID: 173056700594589227, guid: 7b3bfb4e822a6154694d4cf907cf5f8d, type: 3}
   xSpawnRange: {x: -6.5, y: 6.5}
   spawnDelay: 2
   numberOfShipTypes: 3

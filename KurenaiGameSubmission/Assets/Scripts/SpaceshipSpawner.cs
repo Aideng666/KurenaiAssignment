@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpaceshipSpawner : MonoBehaviour
 {
+    [SerializeField] GameObject healthPowerup;
     [SerializeField] Vector2 xSpawnRange = new Vector2(-7.5f, 7.5f);
     [SerializeField] float spawnDelay = 1;
     [SerializeField] int numberOfShipTypes;
@@ -11,12 +12,6 @@ public class SpaceshipSpawner : MonoBehaviour
     float spawnTimer = 0;
     float minSpawnDelay = 1f;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -42,5 +37,10 @@ public class SpaceshipSpawner : MonoBehaviour
         {
             spawnDelay -= 0.1f;
         }
+    }
+
+    public void SpawnHealthPowerup()
+    {
+        Instantiate(healthPowerup, new Vector3(-10f, Random.Range(-4f, 4f), 0), Quaternion.identity);
     }
 }

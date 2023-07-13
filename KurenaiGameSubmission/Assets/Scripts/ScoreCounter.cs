@@ -11,9 +11,16 @@ public static class ScoreCounter
     {
         score++;
 
+        SpaceshipSpawner spawner = GameObject.FindObjectOfType<SpaceshipSpawner>();
+
         if (score % 10 == 0)
         {
-            GameObject.FindObjectOfType<SpaceshipSpawner>().LowerSpawnDelay();
+            spawner.LowerSpawnDelay();
+        }
+
+        if (score % 50 == 0 && Health.Instance.currentHealth < Health.Instance.MaxHealth) 
+        {
+            spawner.SpawnHealthPowerup();
         }
     }
 }

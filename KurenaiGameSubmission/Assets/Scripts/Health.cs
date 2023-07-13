@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
 {
     [SerializeField] int startHealth;
 
+    public int MaxHealth { get { return startHealth; } }
     public int currentHealth { get; private set; }
     public bool gameOver { get; private set; }
 
@@ -40,5 +41,10 @@ public class Health : MonoBehaviour
     public void LoseHealth()
     {
         currentHealth--;
+    }
+
+    public void GainHealth()
+    {
+        currentHealth++;
     }
 }
