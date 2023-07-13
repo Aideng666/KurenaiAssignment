@@ -9,6 +9,7 @@ public class SpaceshipSpawner : MonoBehaviour
     [SerializeField] int numberOfShipTypes;
 
     float spawnTimer = 0;
+    float minSpawnDelay = 1f;
 
 
     // Start is called before the first frame update
@@ -32,6 +33,14 @@ public class SpaceshipSpawner : MonoBehaviour
             }
 
             spawnTimer += Time.deltaTime;
+        }
+    }
+
+    public void LowerSpawnDelay()
+    {
+        if (spawnDelay > minSpawnDelay)
+        {
+            spawnDelay -= 0.1f;
         }
     }
 }

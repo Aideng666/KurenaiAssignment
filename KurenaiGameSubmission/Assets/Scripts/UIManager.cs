@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        AudioManager.Instance.Play("MainTheme");
     }
 
     // Update is called once per frame
@@ -23,10 +23,12 @@ public class UIManager : MonoBehaviour
 
         if (Health.Instance.gameOver)
         {
+            AudioManager.Instance.Stop("MainTheme");
+
             losePanel.SetActive(true);
         }
 
-        if (Health.Instance.currentHealth < hearts.Count)
+        if (Health.Instance.currentHealth < hearts.Count && hearts.Count > 0)
         {
             Destroy(hearts[hearts.Count - 1].gameObject);
 

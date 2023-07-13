@@ -10,5 +10,10 @@ public static class ScoreCounter
     public static void AddScore()
     {
         score++;
+
+        if (score % 10 == 0)
+        {
+            GameObject.FindObjectOfType<SpaceshipSpawner>().LowerSpawnDelay();
+        }
     }
 }

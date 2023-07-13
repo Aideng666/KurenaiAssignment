@@ -12,10 +12,19 @@ public class Spaceship_Splitter : Spaceship
 
     ParticleSystem thrustObject;
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        hitOnce = false;
+    }
+
     protected override void Hit()
     {
         if (hitOnce)
         {
+            AudioManager.Instance.Stop("Thruster");
+
             base.Hit();
 
             SpaceshipPool.Instance.SpawnSpaceship(ShipTypes.Thruster, transform.position).GetComponent<Rigidbody2D>().AddForce(Vector3.up * 4, ForceMode2D.Impulse);
@@ -26,7 +35,9 @@ public class Spaceship_Splitter : Spaceship
         hitOnce = true;
         applyThrusters = true;
 
-        thrustObject = Instantiate(thrustParticle, transform.position + Vector3.down, Quaternion.identity, transform);
+        thrustObject = Instantiate(thrustParticle, transform.position + Vector3.down, thrustParticle.transform.rotation, transform);
+
+        AudioManager.Instance.Play("Thruster");
 
         StartCoroutine(StopThrusters());
     }
@@ -46,8 +57,8 @@ public class Spaceship_Splitter : Spaceship
         yield return new WaitForSeconds(0.75f);
 
         applyThrusters = false;
-
-        Destroy(thrustObject);
+        AudioManager.Instance.Stop("Thruster");
+        Destroy(thrustObject.gameObject);
     }
 
     protected override void ApplyThrusters()

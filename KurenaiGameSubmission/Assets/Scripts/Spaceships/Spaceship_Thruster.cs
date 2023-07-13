@@ -11,6 +11,13 @@ public class Spaceship_Thruster : Spaceship
 
     int spinDirection = 0;
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        hitOnce = false;
+    }
+
     protected override void ApplyThrusters()
     {
         Vector3 forceDirection = Quaternion.Euler(0, 0, Random.Range(-10f, 10f)) * Vector3.up;

@@ -22,6 +22,11 @@ public class Spaceship : MonoBehaviour
         startingGravityScale = body.gravityScale;
     }
 
+    protected virtual void OnEnable()
+    {
+        transform.rotation = Quaternion.identity;
+    }
+
     protected virtual void Update()
     {
         if (body.velocity.y < -maxFallSpeed)
@@ -32,13 +37,13 @@ public class Spaceship : MonoBehaviour
         {
             body.gravityScale = startingGravityScale;
         }
-
-        print(body.velocity.y);
     }
 
     protected virtual void Hit()
     {
         Instantiate(explosionParticle, transform.position, Quaternion.identity);
+
+        AudioManager.Instance.Play("Explode");
 
         SpaceshipPool.Instance.AddSpaceshipToPool(gameObject);
 
@@ -63,6 +68,7 @@ public class Spaceship : MonoBehaviour
         {
             SpaceshipPool.Instance.AddSpaceshipToPool(gameObject);
             Health.Instance.LoseHealth();
+            AudioManager.Instance.Play("Explode");
         }
     }
 
